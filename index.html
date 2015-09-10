@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      window.addEventListener('DOMContentLoaded', function() {
+        var script = document.getElementById('script').textContent;
+        var style = document.getElementById('style').textContent;
+        script = script.replace('@', style);
+        var bookmarklet = 'javascript:' + script.replace(/\s+/, ' ');
+        document.getElementsByTagName('a')[0].href = bookmarklet;
+      });
+    </script>
+    <script id="script" type="text/x-bookmarklet">
+      var tag = document.createElement('style');
+      tag.innerText = "@";
+      document.head.appendChild(tag);
+    </script>
+    <style id="style" type="text/x-bookmarklet">
+    * {
+      animation: lewis 1s infinite linear, spin 30s infinite linear;
+    }
+    @keyframes lewis {
+        0% { background: url(1.jpg); }
+       20% { background: url(2.jpg); }
+       40% { background: url(3.jpg); }
+       60% { background: url(4.jpg); }
+       80% { background: url(5.jpg); }
+      100% { background: url(1.jpg); }
+    }
+    @keyframes spin {
+        0% { transform: rotate(0); }
+       50% { transform: rotate(180deg) scale(2); }
+      100% { transform: rotate(360deg); }
+    }
+    </style>
+  </head>
+  <body>
+    <h1>lewis.js</h1>
+    <p>
+      drag
+      <a href="">
+        this link
+      </a>
+      to your bookmarks bar and then click it whenever you want some lewis.
+    </p>
+  </body>
+</html>
